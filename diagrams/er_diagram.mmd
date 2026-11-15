@@ -1,0 +1,124 @@
+erDiagram
+    CITIES ||--o{ PROFESSIONALS : "bases"
+    CITIES ||--o{ CUSTOMERS : "resides_in"
+    CITIES ||--o{ BOOKINGS : "executed_in"
+
+    SERVICE_CATEGORIES ||--o{ SERVICES : "classifies"
+    SERVICE_CATEGORIES ||--o{ PRO_SKILLS : "qualifies"
+
+    PROFESSIONALS ||--o{ PRO_SKILLS : "certified_for"
+    PROFESSIONALS ||--o{ PRO_AVAILABILITY : "publishes"
+    PROFESSIONALS ||--o{ BOOKINGS : "assigned_to"
+    PROFESSIONALS ||--o{ PAYOUTS : "receives"
+
+    CUSTOMERS ||--o{ BOOKINGS : "places"
+
+    SERVICES ||--o{ BOOKINGS : "booked_service"
+
+    BOOKINGS ||--o{ RESCHEDULES : "undergoes"
+    BOOKINGS ||--o| REVIEWS : "receives"
+
+    CITIES {
+        int city_id PK
+        string city_name
+        string state
+    }
+
+    SERVICE_CATEGORIES {
+        int category_id PK
+        string category_name
+    }
+
+    SERVICES {
+        int service_id PK
+        int category_id FK
+        string service_name
+        int duration_min
+        numeric base_price
+        boolean is_active
+    }
+
+    PROFESSIONALS {
+        int pro_id PK
+        string full_name
+        string phone UK
+        int city_id FK
+        char gender
+        date joined_on
+        numeric rating
+        boolean kyc_verified
+        string status
+    }
+
+    PRO_SKILLS {
+        int pro_id PK,FK
+        int category_id PK,FK
+        date certified_on
+    }
+
+    PRO_AVAILABILITY {
+        int pro_id PK,FK
+        date work_date PK
+        time start_time
+        time end_time
+    }
+
+    CUSTOMERS {
+        int customer_id PK
+        string full_name
+        string phone UK
+        string email UK
+        int city_id FK
+        date plus_valid_until
+        timestamptz created_at
+    }
+
+    BOOKINGS {
+        int booking_id PK
+        int customer_id FK
+        int service_id FK
+        int pro_id FK
+        int city_id FK
+        string pincode
+        timestamptz booked_at
+        timestamptz scheduled_start
+        timestamptz scheduled_end
+        timestamptz started_at
+        timestamptz completed_at
+        string status
+        numeric price
+        numeric discount
+        numeric cancellation_fee
+        numeric tip
+        string payment_method
+    }
+
+    RESCHEDULES {
+        int reschedule_id PK
+        int booking_id FK
+        timestamptz old_start
+        timestamptz new_start
+        string requested_by
+        string reason
+        timestamptz created_at
+    }
+
+    REVIEWS {
+        int booking_id PK,FK
+        int rating_for_pro
+        string comment
+        int rating_for_customer
+        timestamptz created_at
+    }
+
+    PAYOUTS {
+        int payout_id PK
+        int pro_id FK
+        date week_start
+        int jobs
+        numeric gross_earnings
+        numeric commission
+        numeric net_payout
+        string status
+        timestamptz paid_at
+    }

@@ -18,7 +18,7 @@
 
 ---
 
-## Team details (fill in before you start)
+## Team details
 
 | Role | Name | Enrollment No. | GitHub Username |
 |------|------|----------------|-----------------|
@@ -27,7 +27,144 @@
 | Member 3 | Rishit Babbar | 2501010378 | YRB19 |
 | Member 4 | Gurtaz Singh | 2501010172 | gurtaznsw-hue |
 
-**Team No.:** ____ · **Section:** ____ · **Repository URL:** ____
+**Team No.:** 1 · **Section:** SocioFy · **Repository URL:** https://github.com/ankit-er-mishra/SocioFy_DE_2026.git
+
+---
+
+## 👥 Task Allocation & Checkpoints Distribution (4-Member Work Division)
+
+To ensure high code quality, fair workload distribution, and verified commit history for every member on the grading dashboard, the project is divided into 4 specialized technical ownership areas:
+
+```
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                               TEAM WORKLOAD DISTRIBUTION                               │
+├────────────────────┬────────────────────┬────────────────────┬─────────────────────────┤
+│ Chirag Tyagi (Lead)│ Ankit Mishra       │ Rishit Babbar      │ Gurtaz Singh            │
+│ CP0 & CP1          │ CP2                │ CP3                │ CP4                     │
+│ Schema & Modeling  │ Baseline Benchmark │ Index Optimization │ Scalability & Partitions│
+│ Due: Mon 16 Nov    │ Due: Tue 17 Nov    │ Due: Thu 19 Nov    │ Due: Mon 23 Nov         │
+│ Status: COMPLETED  │ Status: NEXT UP    │ Status: UPCOMING   │ Status: UPCOMING        │
+└────────────────────┴────────────────────┴────────────────────┴─────────────────────────┘
+```
+
+### 📋 Member-Wise Responsibility Matrix
+
+| Member | Role | Checkpoint | Assigned Deliverables | Deadline | Marks | Status |
+|--------|------|------------|-----------------------|----------|------:|:------:|
+| **Chirag Tyagi** *(Lead)* | Lead Architect & Data Modeling | **CP0 & CP1** | • `team.json`<br>• `docs/01_problem_understanding.md`<br>• `docs/02_schema_design.md`<br>• `sql/01_schema.sql`<br>• `sql/02_load_data.sql`<br>• `diagrams/er_diagram.*` | Mon 16 Nov 2026 | 7 | **✅ Completed & Committed** |
+| **Ankit Mishra** | Performance Profiler & Benchmarking | **CP2** | • `benchmarks/results/baseline/summary.csv`<br>• `benchmarks/results/baseline/*.txt` (30 plans)<br>• `docs/03_baseline_timings.md` | Tue 17 Nov 2026 | 3 | **⏳ In Progress / Next Up** |
+| **Rishit Babbar** | Optimization Engine & Index Tuning | **CP3** | • `sql/05_indexes.sql`<br>• `sql/06_optimized_queries.sql`<br>• `benchmarks/results/optimized/summary.csv`<br>• `docs/04_optimization_report.md` | Thu 19 Nov 2026 | 16 | **📅 Upcoming** |
+| **Gurtaz Singh** | Scalability Architect & Partitioning | **CP4** | • `sql/08_partitioning.sql`<br>• `benchmarks/results/large/summary.csv`<br>• `docs/05_scalability_report.md` | Mon 23 Nov 2026 | 14 | **📅 Upcoming** |
+
+---
+
+### 🛠 Detailed Execution Guides for Each Member
+
+#### 1. Chirag Tyagi (Group Lead) — CP0 & CP1 [DONE]
+- **Deliverables Owned:**
+  - `team.json`: Configured with team details and credentials.
+  - `docs/01_problem_understanding.md`: Analysis of business problems P1–P8, stakeholder mapping, and SLA classification.
+  - `docs/02_schema_design.md`: Comprehensive data dictionary, 3NF/BCNF normalization proof, justification of redundant columns, 25 CHECK constraints, and empirical data integrity checks (duration checks, payout reconciliation, overlap audit).
+  - `sql/01_schema.sql`: Pure DDL creating schema `uc` and all 11 tables with rigorous PKs, FKs, UNIQUE, and CHECK constraints.
+  - `sql/02_load_data.sql`: Foreign-key compliant data ingestion script using `\copy` and `ANALYZE`.
+  - `diagrams/er_diagram.svg` & `diagrams/er_diagram.png`: Visual ER diagram of the complete relational schema.
+
+---
+
+#### 2. Ankit Mishra — CP2: Baseline Timings & Query Execution Profiling
+- **Due Date:** Tuesday 17 November 2026, 11:59 PM
+- **Goal:** Execute the unoptimized 30-query workload on PostgreSQL, profile query plans, and record baseline execution statistics.
+- **Step-by-Step Instructions:**
+  1. Set up a local PostgreSQL 15+ database:
+     ```bash
+     createdb uc_db
+     psql -d uc_db -f sql/01_schema.sql
+     psql -d uc_db -f sql/02_load_data.sql
+     ```
+  2. Run the automated baseline benchmarking suite:
+     ```bash
+     ./benchmarks/run_benchmark.sh uc_db baseline
+     ```
+     This automatically executes each of the 30 queries 3 times with `EXPLAIN (ANALYZE, BUFFERS)` inside safe `BEGIN ... ROLLBACK` blocks, outputting:
+     - `benchmarks/results/baseline/summary.csv`
+     - `benchmarks/results/baseline/R01.txt` ... `W05.txt`
+  3. Fill `docs/03_baseline_timings.md` with:
+     - The complete 30-query timing table (Run 1, Run 2, Run 3, Average ms).
+     - Scan types for each query (e.g., `Seq Scan` on 150k rows, `Nested Loop`, `Hash Join`).
+     - Root-cause analysis explaining *why* slow queries take significant execution time.
+  4. Commit and push directly under your GitHub account (`ankit-er-mishra`):
+     ```bash
+     git add benchmarks/results/baseline/ docs/03_baseline_timings.md
+     git commit -m "feat(CP2): baseline benchmarking results, raw plans, and timing report"
+     git push origin main
+     ```
+
+---
+
+#### 3. Rishit Babbar — CP3: Index Engineering, Query Rewrites & Optimization
+- **Due Date:** Thursday 19 November 2026, 11:59 PM
+- **Goal:** Speed up slow queries by designing targeted indexes and rewriting sargable query logic without altering result sets.
+- **Step-by-Step Instructions:**
+  1. Create `sql/05_indexes.sql`:
+     - Add composite B-tree indexes with correct column order (`equality columns first, then range/sort`).
+     - Add partial indexes (e.g., filtering `status = 'REQUESTED'` or `status = 'COMPLETED'`).
+     - Add covering indexes with `INCLUDE (...)` for Index-Only Scans.
+     - Add GIN trigram index for `ILIKE '%late%'` in R18 (`CREATE EXTENSION pg_trgm;`).
+  2. Create `sql/06_optimized_queries.sql`:
+     - Rewrite queries for sargability (e.g., replace `DATE(scheduled_start) = '2026-07-02'` with range filters `scheduled_start >= '...' AND scheduled_start < '...'`).
+     - **Fix subtle NULL bug in R13**: Replace `NOT IN` with `NOT EXISTS` (since bookings with NULL `pro_id` cause `NOT IN` to evaluate to UNKNOWN and return 0 rows).
+     - Replace heavy `OFFSET 100000` with keyset/cursor pagination in R22.
+  3. Apply indexes and run the optimized benchmark:
+     ```bash
+     psql -d uc_db -f sql/05_indexes.sql
+     ./benchmarks/run_benchmark.sh uc_db optimized 5 sql/06_optimized_queries.sql
+     ```
+  4. Write `docs/04_optimization_report.md` documenting:
+     - Before vs. After timing comparison table and percentage speedup.
+     - Proof of identical result sets (row counts and checksum/EXCEPT verification).
+     - Before/after EXPLAIN plans for the top 5 query improvements.
+     - Analysis of index storage overhead and impact on write queries (W01–W05).
+  5. Commit and push under your GitHub account (`YRB19`):
+     ```bash
+     git add sql/05_indexes.sql sql/06_optimized_queries.sql benchmarks/results/optimized/ docs/04_optimization_report.md
+     git commit -m "feat(CP3): index definitions, query rewrites, benchmark and optimization report"
+     git push origin main
+     ```
+
+---
+
+#### 4. Gurtaz Singh — CP4: Scalability Architecture, Partitioning & Final Submission
+- **Due Date:** Monday 23 November 2026, 11:59 PM
+- **Goal:** Validate performance on the 20× large dataset (3M+ bookings), implement declarative table partitioning, and formulate the 100× scaling architecture.
+- **Step-by-Step Instructions:**
+  1. Obtain `large_data.zip` (released 19 Nov by faculty) and extract it to `large_data/`.
+  2. Create a clean database, apply Chirag's schema (`01_schema.sql`), load large data, and apply Rishit's indexes (`05_indexes.sql`).
+  3. Benchmark the optimized queries against the large dataset:
+     ```bash
+     ./benchmarks/run_benchmark.sh uc_large large 3 sql/06_optimized_queries.sql
+     ```
+  4. Create `sql/08_partitioning.sql`:
+     - Implement declarative table partitioning on `bookings` (e.g., `PARTITION BY RANGE (scheduled_start)` by month/quarter).
+     - Demonstrate partition pruning with `EXPLAIN (ANALYZE)`.
+  5. Write `docs/05_scalability_report.md`:
+     - Compare execution times between seed (150k) and large (3M) datasets (growth factor calculation).
+     - Validate queries against strict SLA limits (<5ms real-time, <250ms interactive, <5,000ms analytics).
+     - Architect the 100× roadmap: City-based horizontal sharding, read replicas, Redis caching strategy, autovacuum tuning.
+  6. Commit and push under your GitHub account (`gurtaznsw-hue`):
+     ```bash
+     git add sql/08_partitioning.sql benchmarks/results/large/ docs/05_scalability_report.md
+     git commit -m "feat(CP4): declarative partitioning, large dataset benchmark, and scalability report"
+     git push origin main
+     ```
+
+---
+
+### ⚠️ Collaboration & Git Commit Rules
+1. **Individual Commits Required:** Automated grading tools scan the GitHub commit log per author. Every member must commit their assigned deliverables from their own authenticated GitHub account.
+2. **Never Edit Given Files:** Do not modify `queries/workload_30.sql` or `benchmarks/run_benchmark.sh`.
+3. **Never Commit Raw Seed/Large CSV Data:** Keep extracted CSVs in `.gitignore`. Only committed files should be scripts, markdown reports, diagrams, and `summary.csv` result files.
+
+---
 
 ---
 

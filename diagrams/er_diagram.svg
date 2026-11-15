@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" width="100%" height="100%" style="background-color: #0f172a; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <linearGradient id="tableGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b" />
+    </marker>
+  </defs>
+
+  <!-- Title Header -->
+  <text x="800" y="45" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="bold" letter-spacing="1">URBAN COMPANY HOME SERVICES — DATABASE ER DIAGRAM</text>
+  <text x="800" y="72" text-anchor="middle" fill="#94a3b8" font-size="13">Schema: uc · 11 Tables · PostgreSQL 15+ · Author: Chirag Tyagi (Lead)</text>
+
+  <!-- Connection Lines (Paths) -->
+  <!-- Cities -> Professionals -->
+  <path d="M 260 210 L 320 210" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+  <!-- Cities -> Customers -->
+  <path d="M 190 280 L 190 410" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+  <!-- Service Categories -> Services -->
+  <path d="M 190 710 L 190 770" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+  <!-- Service Categories -> Pro Skills -->
+  <path d="M 260 660 L 370 660" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+  <!-- Professionals -> Pro Skills -->
+  <path d="M 440 370 L 440 590" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+  <!-- Professionals -> Pro Availability -->
+  <path d="M 550 240 L 630 240" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+  <!-- Professionals -> Bookings -->
+  <path d="M 550 310 L 890 540" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+  <!-- Professionals -> Payouts -->
+  <path d="M 550 180 L 890 180" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+  <!-- Customers -> Bookings -->
+  <path d="M 270 510 L 890 580" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+  <!-- Services -> Bookings -->
+  <path d="M 270 870 L 890 690" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+  <!-- Bookings -> Reschedules -->
+  <path d="M 1150 560 L 1260 480" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+  <!-- Bookings -> Reviews -->
+  <path d="M 1150 670 L 1260 740" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- 1. CITIES (X: 50, Y: 130) -->
+  <g transform="translate(70, 130)" filter="url(#shadow)">
+    <rect width="200" height="140" rx="8" fill="url(#tableGrad)" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 0 h 200 v 32 h -200 z" rx="8" fill="url(#headerGrad)" />
+    <text x="100" y="21" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">cities</text>
+    <text x="15" y="58" fill="#fbbf24" font-weight="bold" font-size="12">PK  city_id</text><text x="140" y="58" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="84" fill="#f1f5f9" font-size="12">    city_name</text><text x="140" y="84" fill="#94a3b8" font-size="11">VARCHAR</text>
+    <text x="15" y="110" fill="#f1f5f9" font-size="12">    state</text><text x="140" y="110" fill="#94a3b8" font-size="11">VARCHAR</text>
+  </g>
+
+  <!-- 2. SERVICE CATEGORIES (X: 70, Y: 570) -->
+  <g transform="translate(70, 570)" filter="url(#shadow)">
+    <rect width="200" height="120" rx="8" fill="url(#tableGrad)" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 0 h 200 v 32 h -200 z" rx="8" fill="url(#headerGrad)" />
+    <text x="100" y="21" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">service_categories</text>
+    <text x="15" y="58" fill="#fbbf24" font-weight="bold" font-size="12">PK  category_id</text><text x="140" y="58" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="84" fill="#f1f5f9" font-size="12">    category_name</text><text x="140" y="84" fill="#94a3b8" font-size="11">VARCHAR</text>
+  </g>
+
+  <!-- 3. SERVICES (X: 70, Y: 750) -->
+  <g transform="translate(70, 750)" filter="url(#shadow)">
+    <rect width="215" height="215" rx="8" fill="url(#tableGrad)" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 0 h 215 v 32 h -215 z" rx="8" fill="url(#headerGrad)" />
+    <text x="107" y="21" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">services</text>
+    <text x="15" y="58" fill="#fbbf24" font-weight="bold" font-size="12">PK  service_id</text><text x="145" y="58" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="84" fill="#38bdf8" font-size="12">FK  category_id</text><text x="145" y="84" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="110" fill="#f1f5f9" font-size="12">    service_name</text><text x="145" y="110" fill="#94a3b8" font-size="11">VARCHAR</text>
+    <text x="15" y="136" fill="#f1f5f9" font-size="12">    duration_min</text><text x="145" y="136" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="162" fill="#f1f5f9" font-size="12">    base_price</text><text x="145" y="162" fill="#94a3b8" font-size="11">NUMERIC</text>
+    <text x="15" y="188" fill="#f1f5f9" font-size="12">    is_active</text><text x="145" y="188" fill="#94a3b8" font-size="11">BOOLEAN</text>
+  </g>
+
+  <!-- 4. PROFESSIONALS (X: 330, Y: 110) -->
+  <g transform="translate(330, 110)" filter="url(#shadow)">
+    <rect width="220" height="270" rx="8" fill="url(#tableGrad)" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 0 h 220 v 32 h -220 z" rx="8" fill="url(#headerGrad)" />
+    <text x="110" y="21" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">professionals</text>
+    <text x="15" y="56" fill="#fbbf24" font-weight="bold" font-size="12">PK  pro_id</text><text x="150" y="56" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="80" fill="#f1f5f9" font-size="12">    full_name</text><text x="150" y="80" fill="#94a3b8" font-size="11">VARCHAR</text>
+    <text x="15" y="104" fill="#f1f5f9" font-size="12">    phone</text><text x="150" y="104" fill="#94a3b8" font-size="11">VARCHAR</text>
+    <text x="15" y="128" fill="#38bdf8" font-size="12">FK  city_id</text><text x="150" y="128" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="152" fill="#f1f5f9" font-size="12">    gender</text><text x="150" y="152" fill="#94a3b8" font-size="11">CHAR(1)</text>
+    <text x="15" y="176" fill="#f1f5f9" font-size="12">    joined_on</text><text x="150" y="176" fill="#94a3b8" font-size="11">DATE</text>
+    <text x="15" y="200" fill="#f1f5f9" font-size="12">    rating</text><text x="150" y="200" fill="#94a3b8" font-size="11">NUMERIC</text>
+    <text x="15" y="224" fill="#f1f5f9" font-size="12">    kyc_verified</text><text x="150" y="224" fill="#94a3b8" font-size="11">BOOLEAN</text>
+    <text x="15" y="248" fill="#f1f5f9" font-size="12">    status</text><text x="150" y="248" fill="#94a3b8" font-size="11">VARCHAR</text>
+  </g>
+
+  <!-- 5. PRO SKILLS (X: 350, Y: 600) -->
+  <g transform="translate(350, 600)" filter="url(#shadow)">
+    <rect width="200" height="130" rx="8" fill="url(#tableGrad)" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 0 h 200 v 32 h -200 z" rx="8" fill="url(#headerGrad)" />
+    <text x="100" y="21" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">pro_skills</text>
+    <text x="15" y="56" fill="#fbbf24" font-weight="bold" font-size="12">PK,FK pro_id</text><text x="145" y="56" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="80" fill="#fbbf24" font-weight="bold" font-size="12">PK,FK category_id</text><text x="145" y="80" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="104" fill="#f1f5f9" font-size="12">      certified_on</text><text x="145" y="104" fill="#94a3b8" font-size="11">DATE</text>
+  </g>
+
+  <!-- 6. PRO AVAILABILITY (X: 630, Y: 180) -->
+  <g transform="translate(630, 180)" filter="url(#shadow)">
+    <rect width="210" height="150" rx="8" fill="url(#tableGrad)" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 0 h 210 v 32 h -210 z" rx="8" fill="url(#headerGrad)" />
+    <text x="105" y="21" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">pro_availability</text>
+    <text x="15" y="56" fill="#fbbf24" font-weight="bold" font-size="12">PK,FK pro_id</text><text x="145" y="56" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="80" fill="#fbbf24" font-weight="bold" font-size="12">PK    work_date</text><text x="145" y="80" fill="#94a3b8" font-size="11">DATE</text>
+    <text x="15" y="104" fill="#f1f5f9" font-size="12">      start_time</text><text x="145" y="104" fill="#94a3b8" font-size="11">TIME</text>
+    <text x="15" y="128" fill="#f1f5f9" font-size="12">      end_time</text><text x="145" y="128" fill="#94a3b8" font-size="11">TIME</text>
+  </g>
+
+  <!-- 7. CUSTOMERS (X: 70, Y: 330) -->
+  <g transform="translate(70, 330)" filter="url(#shadow)">
+    <rect width="215" height="215" rx="8" fill="url(#tableGrad)" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 0 h 215 v 32 h -215 z" rx="8" fill="url(#headerGrad)" />
+    <text x="107" y="21" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">customers</text>
+    <text x="15" y="56" fill="#fbbf24" font-weight="bold" font-size="12">PK  customer_id</text><text x="145" y="56" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="80" fill="#f1f5f9" font-size="12">    full_name</text><text x="145" y="80" fill="#94a3b8" font-size="11">VARCHAR</text>
+    <text x="15" y="104" fill="#f1f5f9" font-size="12">    phone</text><text x="145" y="104" fill="#94a3b8" font-size="11">VARCHAR</text>
+    <text x="15" y="128" fill="#f1f5f9" font-size="12">    email</text><text x="145" y="128" fill="#94a3b8" font-size="11">VARCHAR</text>
+    <text x="15" y="152" fill="#38bdf8" font-size="12">FK  city_id</text><text x="145" y="152" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="176" fill="#f1f5f9" font-size="12">    plus_valid_until</text><text x="145" y="176" fill="#94a3b8" font-size="11">DATE</text>
+    <text x="15" y="200" fill="#f1f5f9" font-size="12">    created_at</text><text x="145" y="200" fill="#94a3b8" font-size="11">TIMESTAMPTZ</text>
+  </g>
+
+  <!-- 8. BOOKINGS (X: 890, Y: 390) -->
+  <g transform="translate(890, 390)" filter="url(#shadow)">
+    <rect width="260" height="430" rx="8" fill="url(#tableGrad)" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 0 h 260 v 32 h -260 z" rx="8" fill="url(#headerGrad)" />
+    <text x="130" y="21" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">bookings</text>
+    <text x="15" y="54" fill="#fbbf24" font-weight="bold" font-size="12">PK  booking_id</text><text x="170" y="54" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="76" fill="#38bdf8" font-size="12">FK  customer_id</text><text x="170" y="76" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="98" fill="#38bdf8" font-size="12">FK  service_id</text><text x="170" y="98" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="120" fill="#38bdf8" font-size="12">FK  pro_id (NULL)</text><text x="170" y="120" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="142" fill="#38bdf8" font-size="12">FK  city_id</text><text x="170" y="142" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="164" fill="#f1f5f9" font-size="12">    pincode</text><text x="170" y="164" fill="#94a3b8" font-size="11">VARCHAR</text>
+    <text x="15" y="186" fill="#f1f5f9" font-size="12">    booked_at</text><text x="170" y="186" fill="#94a3b8" font-size="11">TIMESTAMPTZ</text>
+    <text x="15" y="208" fill="#f1f5f9" font-size="12">    scheduled_start</text><text x="170" y="208" fill="#94a3b8" font-size="11">TIMESTAMPTZ</text>
+    <text x="15" y="230" fill="#f1f5f9" font-size="12">    scheduled_end</text><text x="170" y="230" fill="#94a3b8" font-size="11">TIMESTAMPTZ</text>
+    <text x="15" y="252" fill="#f1f5f9" font-size="12">    started_at</text><text x="170" y="252" fill="#94a3b8" font-size="11">TIMESTAMPTZ</text>
+    <text x="15" y="274" fill="#f1f5f9" font-size="12">    completed_at</text><text x="170" y="274" fill="#94a3b8" font-size="11">TIMESTAMPTZ</text>
+    <text x="15" y="296" fill="#f1f5f9" font-size="12">    status</text><text x="170" y="296" fill="#94a3b8" font-size="11">VARCHAR</text>
+    <text x="15" y="318" fill="#f1f5f9" font-size="12">    price</text><text x="170" y="318" fill="#94a3b8" font-size="11">NUMERIC</text>
+    <text x="15" y="340" fill="#f1f5f9" font-size="12">    discount</text><text x="170" y="340" fill="#94a3b8" font-size="11">NUMERIC</text>
+    <text x="15" y="362" fill="#f1f5f9" font-size="12">    cancellation_fee</text><text x="170" y="362" fill="#94a3b8" font-size="11">NUMERIC</text>
+    <text x="15" y="384" fill="#f1f5f9" font-size="12">    tip</text><text x="170" y="384" fill="#94a3b8" font-size="11">NUMERIC</text>
+    <text x="15" y="406" fill="#f1f5f9" font-size="12">    payment_method</text><text x="170" y="406" fill="#94a3b8" font-size="11">VARCHAR</text>
+  </g>
+
+  <!-- 9. RESCHEDULES (X: 1260, Y: 380) -->
+  <g transform="translate(1260, 380)" filter="url(#shadow)">
+    <rect width="240" height="200" rx="8" fill="url(#tableGrad)" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 0 h 240 v 32 h -240 z" rx="8" fill="url(#headerGrad)" />
+    <text x="120" y="21" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">reschedules</text>
+    <text x="15" y="54" fill="#fbbf24" font-weight="bold" font-size="12">PK  reschedule_id</text><text x="165" y="54" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="78" fill="#38bdf8" font-size="12">FK  booking_id</text><text x="165" y="78" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="102" fill="#f1f5f9" font-size="12">    old_start</text><text x="165" y="102" fill="#94a3b8" font-size="11">TIMESTAMPTZ</text>
+    <text x="15" y="126" fill="#f1f5f9" font-size="12">    new_start</text><text x="165" y="126" fill="#94a3b8" font-size="11">TIMESTAMPTZ</text>
+    <text x="15" y="150" fill="#f1f5f9" font-size="12">    requested_by</text><text x="165" y="150" fill="#94a3b8" font-size="11">VARCHAR</text>
+    <text x="15" y="174" fill="#f1f5f9" font-size="12">    created_at</text><text x="165" y="174" fill="#94a3b8" font-size="11">TIMESTAMPTZ</text>
+  </g>
+
+  <!-- 10. REVIEWS (X: 1260, Y: 660) -->
+  <g transform="translate(1260, 660)" filter="url(#shadow)">
+    <rect width="240" height="165" rx="8" fill="url(#tableGrad)" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 0 h 240 v 32 h -240 z" rx="8" fill="url(#headerGrad)" />
+    <text x="120" y="21" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">reviews</text>
+    <text x="15" y="54" fill="#fbbf24" font-weight="bold" font-size="12">PK,FK booking_id</text><text x="165" y="54" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="78" fill="#f1f5f9" font-size="12">      rating_for_pro</text><text x="165" y="78" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="102" fill="#f1f5f9" font-size="12">      comment</text><text x="165" y="102" fill="#94a3b8" font-size="11">TEXT</text>
+    <text x="15" y="126" fill="#f1f5f9" font-size="12">      rating_for_cust</text><text x="165" y="126" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="150" fill="#f1f5f9" font-size="12">      created_at</text><text x="165" y="150" fill="#94a3b8" font-size="11">TIMESTAMPTZ</text>
+  </g>
+
+  <!-- 11. PAYOUTS (X: 890, Y: 90) -->
+  <g transform="translate(890, 90)" filter="url(#shadow)">
+    <rect width="245" height="245" rx="8" fill="url(#tableGrad)" stroke="#334155" stroke-width="1.5" />
+    <path d="M 0 0 h 245 v 32 h -245 z" rx="8" fill="url(#headerGrad)" />
+    <text x="122" y="21" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">payouts</text>
+    <text x="15" y="54" fill="#fbbf24" font-weight="bold" font-size="12">PK  payout_id</text><text x="165" y="54" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="76" fill="#38bdf8" font-size="12">FK  pro_id</text><text x="165" y="76" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="98" fill="#f1f5f9" font-size="12">    week_start</text><text x="165" y="98" fill="#94a3b8" font-size="11">DATE (Mon)</text>
+    <text x="15" y="120" fill="#f1f5f9" font-size="12">    jobs</text><text x="165" y="120" fill="#94a3b8" font-size="11">INT</text>
+    <text x="15" y="142" fill="#f1f5f9" font-size="12">    gross_earnings</text><text x="165" y="142" fill="#94a3b8" font-size="11">NUMERIC</text>
+    <text x="15" y="164" fill="#f1f5f9" font-size="12">    commission</text><text x="165" y="164" fill="#94a3b8" font-size="11">NUMERIC</text>
+    <text x="15" y="186" fill="#f1f5f9" font-size="12">    net_payout</text><text x="165" y="186" fill="#94a3b8" font-size="11">NUMERIC</text>
+    <text x="15" y="208" fill="#f1f5f9" font-size="12">    status</text><text x="165" y="208" fill="#94a3b8" font-size="11">VARCHAR</text>
+    <text x="15" y="230" fill="#f1f5f9" font-size="12">    paid_at</text><text x="165" y="230" fill="#94a3b8" font-size="11">TIMESTAMPTZ</text>
+  </g>
+
+</svg>

@@ -1,0 +1,17 @@
+# Ignore data directories and large dumps
+seed_data/
+large_data/
+
+# OS and Editor files
+.DS_Store
+.DS_Store?
+._*
+*.swp
+*~
+.idea/
+.vscode/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
