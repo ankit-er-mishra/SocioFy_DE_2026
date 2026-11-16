@@ -1,0 +1,72 @@
+=== R03 run 1 ===
+Sort  (cost=4804.66..4804.67 rows=1 width=51) (actual time=13.188..13.189 rows=1 loops=1)
+  Sort Key: b.scheduled_start
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=2551
+  ->  Nested Loop Left Join  (cost=0.28..4804.65 rows=1 width=51) (actual time=13.171..13.178 rows=1 loops=1)
+        Buffers: shared hit=2548
+        ->  Nested Loop  (cost=0.00..4796.35 rows=1 width=43) (actual time=13.165..13.172 rows=1 loops=1)
+              Join Filter: (s.service_id = b.service_id)
+              Rows Removed by Join Filter: 4
+              Buffers: shared hit=2545
+              ->  Seq Scan on bookings b  (cost=0.00..4794.00 rows=1 width=31) (actual time=13.160..13.167 rows=1 loops=1)
+                    Filter: ((scheduled_start >= '2026-07-01 00:00:00+05:30'::timestamp with time zone) AND (customer_id = 226))
+                    Rows Removed by Filter: 149999
+                    Buffers: shared hit=2544
+              ->  Seq Scan on services s  (cost=0.00..1.60 rows=60 width=20) (actual time=0.003..0.003 rows=5 loops=1)
+                    Buffers: shared hit=1
+        ->  Index Scan using professionals_pkey on professionals p  (cost=0.28..8.30 rows=1 width=16) (actual time=0.005..0.005 rows=1 loops=1)
+              Index Cond: (pro_id = b.pro_id)
+              Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=290
+Planning Time: 0.465 ms
+Execution Time: 13.219 ms
+=== R03 run 2 ===
+Sort  (cost=4804.66..4804.67 rows=1 width=51) (actual time=10.995..10.995 rows=1 loops=1)
+  Sort Key: b.scheduled_start
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=2551
+  ->  Nested Loop Left Join  (cost=0.28..4804.65 rows=1 width=51) (actual time=10.979..10.986 rows=1 loops=1)
+        Buffers: shared hit=2548
+        ->  Nested Loop  (cost=0.00..4796.35 rows=1 width=43) (actual time=10.973..10.980 rows=1 loops=1)
+              Join Filter: (s.service_id = b.service_id)
+              Rows Removed by Join Filter: 4
+              Buffers: shared hit=2545
+              ->  Seq Scan on bookings b  (cost=0.00..4794.00 rows=1 width=31) (actual time=10.968..10.974 rows=1 loops=1)
+                    Filter: ((scheduled_start >= '2026-07-01 00:00:00+05:30'::timestamp with time zone) AND (customer_id = 226))
+                    Rows Removed by Filter: 149999
+                    Buffers: shared hit=2544
+              ->  Seq Scan on services s  (cost=0.00..1.60 rows=60 width=20) (actual time=0.003..0.003 rows=5 loops=1)
+                    Buffers: shared hit=1
+        ->  Index Scan using professionals_pkey on professionals p  (cost=0.28..8.30 rows=1 width=16) (actual time=0.005..0.005 rows=1 loops=1)
+              Index Cond: (pro_id = b.pro_id)
+              Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=290
+Planning Time: 0.432 ms
+Execution Time: 11.024 ms
+=== R03 run 3 ===
+Sort  (cost=4804.66..4804.67 rows=1 width=51) (actual time=11.170..11.171 rows=1 loops=1)
+  Sort Key: b.scheduled_start
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=2551
+  ->  Nested Loop Left Join  (cost=0.28..4804.65 rows=1 width=51) (actual time=11.153..11.158 rows=1 loops=1)
+        Buffers: shared hit=2548
+        ->  Nested Loop  (cost=0.00..4796.35 rows=1 width=43) (actual time=11.148..11.153 rows=1 loops=1)
+              Join Filter: (s.service_id = b.service_id)
+              Rows Removed by Join Filter: 4
+              Buffers: shared hit=2545
+              ->  Seq Scan on bookings b  (cost=0.00..4794.00 rows=1 width=31) (actual time=11.141..11.145 rows=1 loops=1)
+                    Filter: ((scheduled_start >= '2026-07-01 00:00:00+05:30'::timestamp with time zone) AND (customer_id = 226))
+                    Rows Removed by Filter: 149999
+                    Buffers: shared hit=2544
+              ->  Seq Scan on services s  (cost=0.00..1.60 rows=60 width=20) (actual time=0.005..0.005 rows=5 loops=1)
+                    Buffers: shared hit=1
+        ->  Index Scan using professionals_pkey on professionals p  (cost=0.28..8.30 rows=1 width=16) (actual time=0.004..0.004 rows=1 loops=1)
+              Index Cond: (pro_id = b.pro_id)
+              Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=290
+Planning Time: 0.562 ms
+Execution Time: 11.213 ms

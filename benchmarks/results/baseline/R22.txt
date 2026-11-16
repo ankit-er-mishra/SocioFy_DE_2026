@@ -1,0 +1,39 @@
+=== R22 run 1 ===
+Limit  (cost=20780.95..20781.01 rows=25 width=31) (actual time=32.791..32.793 rows=25 loops=1)
+  Buffers: shared hit=2547, temp read=690 written=804
+  ->  Sort  (cost=20530.95..20905.95 rows=150000 width=31) (actual time=28.111..31.124 rows=100025 loops=1)
+        Sort Key: booked_at DESC
+        Sort Method: external merge  Disk: 6408kB
+        Buffers: shared hit=2547, temp read=690 written=804
+        ->  Seq Scan on bookings  (cost=0.00..4044.00 rows=150000 width=31) (actual time=0.006..11.256 rows=150000 loops=1)
+              Buffers: shared hit=2544
+Planning:
+  Buffers: shared hit=83
+Planning Time: 0.148 ms
+Execution Time: 34.039 ms
+=== R22 run 2 ===
+Limit  (cost=20780.95..20781.01 rows=25 width=31) (actual time=30.811..30.813 rows=25 loops=1)
+  Buffers: shared hit=2547, temp read=690 written=804
+  ->  Sort  (cost=20530.95..20905.95 rows=150000 width=31) (actual time=25.971..29.102 rows=100025 loops=1)
+        Sort Key: booked_at DESC
+        Sort Method: external merge  Disk: 6408kB
+        Buffers: shared hit=2547, temp read=690 written=804
+        ->  Seq Scan on bookings  (cost=0.00..4044.00 rows=150000 width=31) (actual time=0.006..10.467 rows=150000 loops=1)
+              Buffers: shared hit=2544
+Planning:
+  Buffers: shared hit=83
+Planning Time: 0.134 ms
+Execution Time: 31.974 ms
+=== R22 run 3 ===
+Limit  (cost=20780.95..20781.01 rows=25 width=31) (actual time=30.499..30.502 rows=25 loops=1)
+  Buffers: shared hit=2547, temp read=690 written=804
+  ->  Sort  (cost=20530.95..20905.95 rows=150000 width=31) (actual time=25.786..28.835 rows=100025 loops=1)
+        Sort Key: booked_at DESC
+        Sort Method: external merge  Disk: 6408kB
+        Buffers: shared hit=2547, temp read=690 written=804
+        ->  Seq Scan on bookings  (cost=0.00..4044.00 rows=150000 width=31) (actual time=0.005..10.268 rows=150000 loops=1)
+              Buffers: shared hit=2544
+Planning:
+  Buffers: shared hit=83
+Planning Time: 0.133 ms
+Execution Time: 31.671 ms
