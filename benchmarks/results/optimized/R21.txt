@@ -1,0 +1,170 @@
+=== R21 run 1 ===
+Gather Merge  (cost=6131.45..6478.06 rows=3014 width=24) (actual time=30.797..31.714 rows=1000 loops=1)
+  Workers Planned: 1
+  Workers Launched: 1
+  Buffers: shared hit=2679
+  ->  Sort  (cost=5131.44..5138.98 rows=3014 width=24) (actual time=27.224..27.234 rows=500 loops=2)
+        Sort Key: b.booking_id
+        Sort Method: quicksort  Memory: 60kB
+        Buffers: shared hit=2679
+        Worker 0:  Sort Method: quicksort  Memory: 55kB
+        ->  Hash Anti Join  (cost=155.35..4957.27 rows=3014 width=24) (actual time=1.376..27.071 rows=500 loops=2)
+              Hash Cond: ((b.pro_id = ps.pro_id) AND (s.category_id = ps.category_id))
+              Buffers: shared hit=2643
+              ->  Hash Join  (cost=2.35..3854.88 rows=75288 width=28) (actual time=0.141..16.777 rows=63846 loops=2)
+                    Hash Cond: (b.service_id = s.service_id)
+                    Buffers: shared hit=2587
+                    ->  Parallel Seq Scan on bookings b  (cost=0.00..3640.94 rows=75288 width=12) (actual time=0.012..9.873 rows=63846 loops=2)
+                          Filter: ((status)::text = 'COMPLETED'::text)
+                          Rows Removed by Filter: 11154
+                          Buffers: shared hit=2538
+                    ->  Hash  (cost=1.60..1.60 rows=60 width=24) (actual time=0.080..0.080 rows=60 loops=2)
+                          Buckets: 1024  Batches: 1  Memory Usage: 12kB
+                          Buffers: shared hit=2
+                          ->  Seq Scan on services s  (cost=0.00..1.60 rows=60 width=24) (actual time=0.059..0.064 rows=60 loops=2)
+                                Buffers: shared hit=2
+              ->  Hash  (cost=78.00..78.00 rows=5000 width=8) (actual time=1.154..1.154 rows=5000 loops=2)
+                    Buckets: 8192  Batches: 1  Memory Usage: 260kB
+                    Buffers: shared hit=56
+                    ->  Seq Scan on pro_skills ps  (cost=0.00..78.00 rows=5000 width=8) (actual time=0.035..0.470 rows=5000 loops=2)
+                          Buffers: shared hit=56
+Planning:
+  Buffers: shared hit=698
+Planning Time: 3.573 ms
+Execution Time: 31.825 ms
+=== R21 run 2 ===
+Gather Merge  (cost=6131.45..6478.06 rows=3014 width=24) (actual time=20.042..20.897 rows=1000 loops=1)
+  Workers Planned: 1
+  Workers Launched: 1
+  Buffers: shared hit=2679
+  ->  Sort  (cost=5131.44..5138.98 rows=3014 width=24) (actual time=19.005..19.015 rows=500 loops=2)
+        Sort Key: b.booking_id
+        Sort Method: quicksort  Memory: 60kB
+        Buffers: shared hit=2679
+        Worker 0:  Sort Method: quicksort  Memory: 56kB
+        ->  Hash Anti Join  (cost=155.35..4957.27 rows=3014 width=24) (actual time=0.509..18.901 rows=500 loops=2)
+              Hash Cond: ((b.pro_id = ps.pro_id) AND (s.category_id = ps.category_id))
+              Buffers: shared hit=2643
+              ->  Hash Join  (cost=2.35..3854.88 rows=75288 width=28) (actual time=0.041..12.982 rows=63846 loops=2)
+                    Hash Cond: (b.service_id = s.service_id)
+                    Buffers: shared hit=2587
+                    ->  Parallel Seq Scan on bookings b  (cost=0.00..3640.94 rows=75288 width=12) (actual time=0.004..7.858 rows=63846 loops=2)
+                          Filter: ((status)::text = 'COMPLETED'::text)
+                          Rows Removed by Filter: 11154
+                          Buffers: shared hit=2538
+                    ->  Hash  (cost=1.60..1.60 rows=60 width=24) (actual time=0.019..0.019 rows=60 loops=2)
+                          Buckets: 1024  Batches: 1  Memory Usage: 12kB
+                          Buffers: shared hit=2
+                          ->  Seq Scan on services s  (cost=0.00..1.60 rows=60 width=24) (actual time=0.010..0.012 rows=60 loops=2)
+                                Buffers: shared hit=2
+              ->  Hash  (cost=78.00..78.00 rows=5000 width=8) (actual time=0.444..0.444 rows=5000 loops=2)
+                    Buckets: 8192  Batches: 1  Memory Usage: 260kB
+                    Buffers: shared hit=56
+                    ->  Seq Scan on pro_skills ps  (cost=0.00..78.00 rows=5000 width=8) (actual time=0.010..0.201 rows=5000 loops=2)
+                          Buffers: shared hit=56
+Planning:
+  Buffers: shared hit=698
+Planning Time: 1.290 ms
+Execution Time: 20.960 ms
+=== R21 run 3 ===
+Gather Merge  (cost=6131.45..6478.06 rows=3014 width=24) (actual time=19.345..20.944 rows=1000 loops=1)
+  Workers Planned: 1
+  Workers Launched: 1
+  Buffers: shared hit=2679
+  ->  Sort  (cost=5131.44..5138.98 rows=3014 width=24) (actual time=17.949..17.970 rows=500 loops=2)
+        Sort Key: b.booking_id
+        Sort Method: quicksort  Memory: 62kB
+        Buffers: shared hit=2679
+        Worker 0:  Sort Method: quicksort  Memory: 54kB
+        ->  Hash Anti Join  (cost=155.35..4957.27 rows=3014 width=24) (actual time=0.947..17.810 rows=500 loops=2)
+              Hash Cond: ((b.pro_id = ps.pro_id) AND (s.category_id = ps.category_id))
+              Buffers: shared hit=2643
+              ->  Hash Join  (cost=2.35..3854.88 rows=75288 width=28) (actual time=0.148..12.394 rows=63846 loops=2)
+                    Hash Cond: (b.service_id = s.service_id)
+                    Buffers: shared hit=2587
+                    ->  Parallel Seq Scan on bookings b  (cost=0.00..3640.94 rows=75288 width=12) (actual time=0.012..7.456 rows=63846 loops=2)
+                          Filter: ((status)::text = 'COMPLETED'::text)
+                          Rows Removed by Filter: 11154
+                          Buffers: shared hit=2538
+                    ->  Hash  (cost=1.60..1.60 rows=60 width=24) (actual time=0.093..0.094 rows=60 loops=2)
+                          Buckets: 1024  Batches: 1  Memory Usage: 12kB
+                          Buffers: shared hit=2
+                          ->  Seq Scan on services s  (cost=0.00..1.60 rows=60 width=24) (actual time=0.064..0.068 rows=60 loops=2)
+                                Buffers: shared hit=2
+              ->  Hash  (cost=78.00..78.00 rows=5000 width=8) (actual time=0.749..0.750 rows=5000 loops=2)
+                    Buckets: 8192  Batches: 1  Memory Usage: 260kB
+                    Buffers: shared hit=56
+                    ->  Seq Scan on pro_skills ps  (cost=0.00..78.00 rows=5000 width=8) (actual time=0.028..0.346 rows=5000 loops=2)
+                          Buffers: shared hit=56
+Planning:
+  Buffers: shared hit=698
+Planning Time: 1.387 ms
+Execution Time: 21.016 ms
+=== R21 run 4 ===
+Gather Merge  (cost=6131.45..6478.06 rows=3014 width=24) (actual time=21.221..22.146 rows=1000 loops=1)
+  Workers Planned: 1
+  Workers Launched: 1
+  Buffers: shared hit=2679
+  ->  Sort  (cost=5131.44..5138.98 rows=3014 width=24) (actual time=19.395..19.405 rows=500 loops=2)
+        Sort Key: b.booking_id
+        Sort Method: quicksort  Memory: 64kB
+        Buffers: shared hit=2679
+        Worker 0:  Sort Method: quicksort  Memory: 52kB
+        ->  Hash Anti Join  (cost=155.35..4957.27 rows=3014 width=24) (actual time=1.011..19.272 rows=500 loops=2)
+              Hash Cond: ((b.pro_id = ps.pro_id) AND (s.category_id = ps.category_id))
+              Buffers: shared hit=2643
+              ->  Hash Join  (cost=2.35..3854.88 rows=75288 width=28) (actual time=0.169..13.189 rows=63846 loops=2)
+                    Hash Cond: (b.service_id = s.service_id)
+                    Buffers: shared hit=2587
+                    ->  Parallel Seq Scan on bookings b  (cost=0.00..3640.94 rows=75288 width=12) (actual time=0.016..7.972 rows=63846 loops=2)
+                          Filter: ((status)::text = 'COMPLETED'::text)
+                          Rows Removed by Filter: 11154
+                          Buffers: shared hit=2538
+                    ->  Hash  (cost=1.60..1.60 rows=60 width=24) (actual time=0.102..0.103 rows=60 loops=2)
+                          Buckets: 1024  Batches: 1  Memory Usage: 12kB
+                          Buffers: shared hit=2
+                          ->  Seq Scan on services s  (cost=0.00..1.60 rows=60 width=24) (actual time=0.068..0.073 rows=60 loops=2)
+                                Buffers: shared hit=2
+              ->  Hash  (cost=78.00..78.00 rows=5000 width=8) (actual time=0.771..0.771 rows=5000 loops=2)
+                    Buckets: 8192  Batches: 1  Memory Usage: 260kB
+                    Buffers: shared hit=56
+                    ->  Seq Scan on pro_skills ps  (cost=0.00..78.00 rows=5000 width=8) (actual time=0.039..0.348 rows=5000 loops=2)
+                          Buffers: shared hit=56
+Planning:
+  Buffers: shared hit=698
+Planning Time: 1.607 ms
+Execution Time: 22.247 ms
+=== R21 run 5 ===
+Gather Merge  (cost=6131.45..6478.06 rows=3014 width=24) (actual time=20.509..22.152 rows=1000 loops=1)
+  Workers Planned: 1
+  Workers Launched: 1
+  Buffers: shared hit=2679
+  ->  Sort  (cost=5131.44..5138.98 rows=3014 width=24) (actual time=17.800..17.826 rows=500 loops=2)
+        Sort Key: b.booking_id
+        Sort Method: quicksort  Memory: 61kB
+        Buffers: shared hit=2679
+        Worker 0:  Sort Method: quicksort  Memory: 55kB
+        ->  Hash Anti Join  (cost=155.35..4957.27 rows=3014 width=24) (actual time=0.616..17.699 rows=500 loops=2)
+              Hash Cond: ((b.pro_id = ps.pro_id) AND (s.category_id = ps.category_id))
+              Buffers: shared hit=2643
+              ->  Hash Join  (cost=2.35..3854.88 rows=75288 width=28) (actual time=0.065..12.421 rows=63846 loops=2)
+                    Hash Cond: (b.service_id = s.service_id)
+                    Buffers: shared hit=2587
+                    ->  Parallel Seq Scan on bookings b  (cost=0.00..3640.94 rows=75288 width=12) (actual time=0.007..7.548 rows=63846 loops=2)
+                          Filter: ((status)::text = 'COMPLETED'::text)
+                          Rows Removed by Filter: 11154
+                          Buffers: shared hit=2538
+                    ->  Hash  (cost=1.60..1.60 rows=60 width=24) (actual time=0.034..0.035 rows=60 loops=2)
+                          Buckets: 1024  Batches: 1  Memory Usage: 12kB
+                          Buffers: shared hit=2
+                          ->  Seq Scan on services s  (cost=0.00..1.60 rows=60 width=24) (actual time=0.025..0.027 rows=60 loops=2)
+                                Buffers: shared hit=2
+              ->  Hash  (cost=78.00..78.00 rows=5000 width=8) (actual time=0.531..0.531 rows=5000 loops=2)
+                    Buckets: 8192  Batches: 1  Memory Usage: 260kB
+                    Buffers: shared hit=56
+                    ->  Seq Scan on pro_skills ps  (cost=0.00..78.00 rows=5000 width=8) (actual time=0.032..0.253 rows=5000 loops=2)
+                          Buffers: shared hit=56
+Planning:
+  Buffers: shared hit=698
+Planning Time: 1.536 ms
+Execution Time: 22.243 ms

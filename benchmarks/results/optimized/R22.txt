@@ -1,0 +1,50 @@
+=== R22 run 1 ===
+Limit  (cost=0.42..1.56 rows=25 width=31) (actual time=0.017..0.021 rows=25 loops=1)
+  Buffers: shared hit=3 read=1
+  ->  Index Scan using idx_bookings_booked_desc on bookings  (cost=0.42..2401.01 rows=52662 width=31) (actual time=0.016..0.019 rows=25 loops=1)
+        Index Cond: (booked_at < '2025-07-15 00:00:00+05:30'::timestamp with time zone)
+        Buffers: shared hit=3 read=1
+Planning:
+  Buffers: shared hit=579
+Planning Time: 0.988 ms
+Execution Time: 0.036 ms
+=== R22 run 2 ===
+Limit  (cost=0.42..1.56 rows=25 width=31) (actual time=0.014..0.017 rows=25 loops=1)
+  Buffers: shared hit=4
+  ->  Index Scan using idx_bookings_booked_desc on bookings  (cost=0.42..2401.01 rows=52662 width=31) (actual time=0.013..0.016 rows=25 loops=1)
+        Index Cond: (booked_at < '2025-07-15 00:00:00+05:30'::timestamp with time zone)
+        Buffers: shared hit=4
+Planning:
+  Buffers: shared hit=579
+Planning Time: 1.366 ms
+Execution Time: 0.034 ms
+=== R22 run 3 ===
+Limit  (cost=0.42..1.56 rows=25 width=31) (actual time=0.015..0.020 rows=25 loops=1)
+  Buffers: shared hit=4
+  ->  Index Scan using idx_bookings_booked_desc on bookings  (cost=0.42..2401.01 rows=52662 width=31) (actual time=0.015..0.019 rows=25 loops=1)
+        Index Cond: (booked_at < '2025-07-15 00:00:00+05:30'::timestamp with time zone)
+        Buffers: shared hit=4
+Planning:
+  Buffers: shared hit=579
+Planning Time: 1.663 ms
+Execution Time: 0.040 ms
+=== R22 run 4 ===
+Limit  (cost=0.42..1.56 rows=25 width=31) (actual time=0.013..0.017 rows=25 loops=1)
+  Buffers: shared hit=4
+  ->  Index Scan using idx_bookings_booked_desc on bookings  (cost=0.42..2401.01 rows=52662 width=31) (actual time=0.013..0.015 rows=25 loops=1)
+        Index Cond: (booked_at < '2025-07-15 00:00:00+05:30'::timestamp with time zone)
+        Buffers: shared hit=4
+Planning:
+  Buffers: shared hit=579
+Planning Time: 0.950 ms
+Execution Time: 0.031 ms
+=== R22 run 5 ===
+Limit  (cost=0.42..1.56 rows=25 width=31) (actual time=0.014..0.018 rows=25 loops=1)
+  Buffers: shared hit=4
+  ->  Index Scan using idx_bookings_booked_desc on bookings  (cost=0.42..2401.01 rows=52662 width=31) (actual time=0.013..0.017 rows=25 loops=1)
+        Index Cond: (booked_at < '2025-07-15 00:00:00+05:30'::timestamp with time zone)
+        Buffers: shared hit=4
+Planning:
+  Buffers: shared hit=579
+Planning Time: 1.302 ms
+Execution Time: 0.034 ms

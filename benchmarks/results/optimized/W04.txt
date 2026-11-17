@@ -1,0 +1,120 @@
+=== W04 run 1 ===
+Insert on payouts  (cost=4326.61..4352.45 rows=0 width=0) (actual time=11.933..11.938 rows=0 loops=1)
+  Buffers: shared hit=4080 read=517 dirtied=46 written=13
+  ->  Subquery Scan on "*SELECT*"  (cost=4326.61..4352.45 rows=360 width=130) (actual time=4.562..5.423 rows=401 loops=1)
+        Buffers: shared hit=36 read=489
+        ->  GroupAggregate  (cost=4326.61..4345.25 rows=360 width=148) (actual time=4.559..5.326 rows=401 loops=1)
+              Group Key: bookings.pro_id
+              Buffers: shared hit=36 read=489
+              ->  Sort  (cost=4326.61..4327.59 rows=392 width=17) (actual time=4.534..4.622 rows=462 loops=1)
+                    Sort Key: bookings.pro_id
+                    Sort Method: quicksort  Memory: 51kB
+                    Buffers: shared hit=36 read=489
+                    ->  Bitmap Heap Scan on bookings  (cost=3260.42..4309.73 rows=392 width=17) (actual time=4.241..4.427 rows=462 loops=1)
+                          Recheck Cond: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+                          Heap Blocks: exact=30
+                          Buffers: shared hit=33 read=489
+                          ->  Bitmap Index Scan on idx_bookings_pro_completed_status  (cost=0.00..3260.32 rows=392 width=0) (actual time=4.216..4.219 rows=467 loops=1)
+                                Index Cond: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone))
+                                Buffers: shared hit=3 read=489
+Planning:
+  Buffers: shared hit=595
+Planning Time: 2.655 ms
+Trigger for constraint payouts_pro_id_fkey: time=3.955 calls=401
+Execution Time: 16.100 ms
+=== W04 run 2 ===
+Insert on payouts  (cost=4326.61..4352.45 rows=0 width=0) (actual time=7.912..7.913 rows=0 loops=1)
+  Buffers: shared hit=5759 dirtied=4 written=4
+  ->  Subquery Scan on "*SELECT*"  (cost=4326.61..4352.45 rows=360 width=130) (actual time=2.666..3.436 rows=401 loops=1)
+        Buffers: shared hit=525
+        ->  GroupAggregate  (cost=4326.61..4345.25 rows=360 width=148) (actual time=2.663..3.342 rows=401 loops=1)
+              Group Key: bookings.pro_id
+              Buffers: shared hit=525
+              ->  Sort  (cost=4326.61..4327.59 rows=392 width=17) (actual time=2.637..2.716 rows=462 loops=1)
+                    Sort Key: bookings.pro_id
+                    Sort Method: quicksort  Memory: 51kB
+                    Buffers: shared hit=525
+                    ->  Bitmap Heap Scan on bookings  (cost=3260.42..4309.73 rows=392 width=17) (actual time=2.375..2.530 rows=462 loops=1)
+                          Recheck Cond: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+                          Heap Blocks: exact=30
+                          Buffers: shared hit=522
+                          ->  Bitmap Index Scan on idx_bookings_pro_completed_status  (cost=0.00..3260.32 rows=392 width=0) (actual time=2.356..2.356 rows=467 loops=1)
+                                Index Cond: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone))
+                                Buffers: shared hit=492
+Planning:
+  Buffers: shared hit=595
+Planning Time: 2.884 ms
+Trigger for constraint payouts_pro_id_fkey: time=1.429 calls=401
+Execution Time: 9.452 ms
+=== W04 run 3 ===
+Insert on payouts  (cost=4326.61..4352.45 rows=0 width=0) (actual time=4.662..4.663 rows=0 loops=1)
+  Buffers: shared hit=5729 dirtied=4 written=4
+  ->  Subquery Scan on "*SELECT*"  (cost=4326.61..4352.45 rows=360 width=130) (actual time=2.405..2.728 rows=401 loops=1)
+        Buffers: shared hit=525
+        ->  GroupAggregate  (cost=4326.61..4345.25 rows=360 width=148) (actual time=2.403..2.690 rows=401 loops=1)
+              Group Key: bookings.pro_id
+              Buffers: shared hit=525
+              ->  Sort  (cost=4326.61..4327.59 rows=392 width=17) (actual time=2.390..2.408 rows=462 loops=1)
+                    Sort Key: bookings.pro_id
+                    Sort Method: quicksort  Memory: 51kB
+                    Buffers: shared hit=525
+                    ->  Bitmap Heap Scan on bookings  (cost=3260.42..4309.73 rows=392 width=17) (actual time=2.233..2.317 rows=462 loops=1)
+                          Recheck Cond: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+                          Heap Blocks: exact=30
+                          Buffers: shared hit=522
+                          ->  Bitmap Index Scan on idx_bookings_pro_completed_status  (cost=0.00..3260.32 rows=392 width=0) (actual time=2.217..2.217 rows=467 loops=1)
+                                Index Cond: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone))
+                                Buffers: shared hit=492
+Planning:
+  Buffers: shared hit=595
+Planning Time: 2.918 ms
+Trigger for constraint payouts_pro_id_fkey: time=1.306 calls=401
+Execution Time: 6.079 ms
+=== W04 run 4 ===
+Insert on payouts  (cost=4326.61..4352.45 rows=0 width=0) (actual time=3.829..3.830 rows=0 loops=1)
+  Buffers: shared hit=5731 dirtied=6 written=6
+  ->  Subquery Scan on "*SELECT*"  (cost=4326.61..4352.45 rows=360 width=130) (actual time=1.758..2.058 rows=401 loops=1)
+        Buffers: shared hit=525
+        ->  GroupAggregate  (cost=4326.61..4345.25 rows=360 width=148) (actual time=1.756..2.021 rows=401 loops=1)
+              Group Key: bookings.pro_id
+              Buffers: shared hit=525
+              ->  Sort  (cost=4326.61..4327.59 rows=392 width=17) (actual time=1.744..1.758 rows=462 loops=1)
+                    Sort Key: bookings.pro_id
+                    Sort Method: quicksort  Memory: 51kB
+                    Buffers: shared hit=525
+                    ->  Bitmap Heap Scan on bookings  (cost=3260.42..4309.73 rows=392 width=17) (actual time=1.618..1.693 rows=462 loops=1)
+                          Recheck Cond: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+                          Heap Blocks: exact=30
+                          Buffers: shared hit=522
+                          ->  Bitmap Index Scan on idx_bookings_pro_completed_status  (cost=0.00..3260.32 rows=392 width=0) (actual time=1.613..1.613 rows=467 loops=1)
+                                Index Cond: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone))
+                                Buffers: shared hit=492
+Planning:
+  Buffers: shared hit=595
+Planning Time: 1.236 ms
+Trigger for constraint payouts_pro_id_fkey: time=1.495 calls=401
+Execution Time: 5.382 ms
+=== W04 run 5 ===
+Insert on payouts  (cost=4326.61..4352.45 rows=0 width=0) (actual time=4.449..4.450 rows=0 loops=1)
+  Buffers: shared hit=5737 dirtied=4 written=4
+  ->  Subquery Scan on "*SELECT*"  (cost=4326.61..4352.45 rows=360 width=130) (actual time=2.051..2.393 rows=401 loops=1)
+        Buffers: shared hit=525
+        ->  GroupAggregate  (cost=4326.61..4345.25 rows=360 width=148) (actual time=2.049..2.353 rows=401 loops=1)
+              Group Key: bookings.pro_id
+              Buffers: shared hit=525
+              ->  Sort  (cost=4326.61..4327.59 rows=392 width=17) (actual time=2.035..2.052 rows=462 loops=1)
+                    Sort Key: bookings.pro_id
+                    Sort Method: quicksort  Memory: 51kB
+                    Buffers: shared hit=525
+                    ->  Bitmap Heap Scan on bookings  (cost=3260.42..4309.73 rows=392 width=17) (actual time=1.897..1.975 rows=462 loops=1)
+                          Recheck Cond: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone) AND ((status)::text = 'COMPLETED'::text))
+                          Heap Blocks: exact=30
+                          Buffers: shared hit=522
+                          ->  Bitmap Index Scan on idx_bookings_pro_completed_status  (cost=0.00..3260.32 rows=392 width=0) (actual time=1.883..1.883 rows=467 loops=1)
+                                Index Cond: ((completed_at >= '2026-06-29 00:00:00+05:30'::timestamp with time zone) AND (completed_at < '2026-07-06 00:00:00+05:30'::timestamp with time zone))
+                                Buffers: shared hit=492
+Planning:
+  Buffers: shared hit=595
+Planning Time: 2.475 ms
+Trigger for constraint payouts_pro_id_fkey: time=1.420 calls=401
+Execution Time: 5.944 ms

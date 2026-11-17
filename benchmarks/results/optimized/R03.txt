@@ -1,0 +1,125 @@
+=== R03 run 1 ===
+Sort  (cost=18.45..18.46 rows=1 width=51) (actual time=0.132..0.134 rows=1 loops=1)
+  Sort Key: b.scheduled_start
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=8 read=2
+  ->  Nested Loop Left Join  (cost=8.58..18.44 rows=1 width=51) (actual time=0.095..0.108 rows=1 loops=1)
+        Buffers: shared hit=5 read=2
+        ->  Hash Join  (cost=8.30..10.14 rows=1 width=43) (actual time=0.080..0.093 rows=1 loops=1)
+              Hash Cond: (s.service_id = b.service_id)
+              Buffers: shared hit=2 read=2
+              ->  Seq Scan on services s  (cost=0.00..1.60 rows=60 width=20) (actual time=0.013..0.019 rows=60 loops=1)
+                    Buffers: shared hit=1
+              ->  Hash  (cost=8.29..8.29 rows=1 width=31) (actual time=0.052..0.052 rows=1 loops=1)
+                    Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                    Buffers: shared hit=1 read=2
+                    ->  Index Scan using idx_bookings_customer_cover on bookings b  (cost=0.28..8.29 rows=1 width=31) (actual time=0.041..0.041 rows=1 loops=1)
+                          Index Cond: (customer_id = 226)
+                          Buffers: shared hit=1 read=2
+        ->  Index Scan using professionals_pkey on professionals p  (cost=0.28..8.30 rows=1 width=16) (actual time=0.013..0.013 rows=1 loops=1)
+              Index Cond: (pro_id = b.pro_id)
+              Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=891
+Planning Time: 3.332 ms
+Execution Time: 0.216 ms
+=== R03 run 2 ===
+Sort  (cost=18.45..18.46 rows=1 width=51) (actual time=0.066..0.068 rows=1 loops=1)
+  Sort Key: b.scheduled_start
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=10
+  ->  Nested Loop Left Join  (cost=8.58..18.44 rows=1 width=51) (actual time=0.044..0.051 rows=1 loops=1)
+        Buffers: shared hit=7
+        ->  Hash Join  (cost=8.30..10.14 rows=1 width=43) (actual time=0.034..0.041 rows=1 loops=1)
+              Hash Cond: (s.service_id = b.service_id)
+              Buffers: shared hit=4
+              ->  Seq Scan on services s  (cost=0.00..1.60 rows=60 width=20) (actual time=0.006..0.009 rows=60 loops=1)
+                    Buffers: shared hit=1
+              ->  Hash  (cost=8.29..8.29 rows=1 width=31) (actual time=0.019..0.020 rows=1 loops=1)
+                    Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                    Buffers: shared hit=3
+                    ->  Index Scan using idx_bookings_customer_cover on bookings b  (cost=0.28..8.29 rows=1 width=31) (actual time=0.012..0.012 rows=1 loops=1)
+                          Index Cond: (customer_id = 226)
+                          Buffers: shared hit=3
+        ->  Index Scan using professionals_pkey on professionals p  (cost=0.28..8.30 rows=1 width=16) (actual time=0.008..0.008 rows=1 loops=1)
+              Index Cond: (pro_id = b.pro_id)
+              Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=891
+Planning Time: 2.966 ms
+Execution Time: 0.121 ms
+=== R03 run 3 ===
+Sort  (cost=18.45..18.46 rows=1 width=51) (actual time=0.127..0.129 rows=1 loops=1)
+  Sort Key: b.scheduled_start
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=10
+  ->  Nested Loop Left Join  (cost=8.58..18.44 rows=1 width=51) (actual time=0.093..0.102 rows=1 loops=1)
+        Buffers: shared hit=7
+        ->  Hash Join  (cost=8.30..10.14 rows=1 width=43) (actual time=0.053..0.061 rows=1 loops=1)
+              Hash Cond: (s.service_id = b.service_id)
+              Buffers: shared hit=4
+              ->  Seq Scan on services s  (cost=0.00..1.60 rows=60 width=20) (actual time=0.014..0.018 rows=60 loops=1)
+                    Buffers: shared hit=1
+              ->  Hash  (cost=8.29..8.29 rows=1 width=31) (actual time=0.027..0.028 rows=1 loops=1)
+                    Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                    Buffers: shared hit=3
+                    ->  Index Scan using idx_bookings_customer_cover on bookings b  (cost=0.28..8.29 rows=1 width=31) (actual time=0.018..0.019 rows=1 loops=1)
+                          Index Cond: (customer_id = 226)
+                          Buffers: shared hit=3
+        ->  Index Scan using professionals_pkey on professionals p  (cost=0.28..8.30 rows=1 width=16) (actual time=0.012..0.012 rows=1 loops=1)
+              Index Cond: (pro_id = b.pro_id)
+              Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=891
+Planning Time: 4.316 ms
+Execution Time: 0.226 ms
+=== R03 run 4 ===
+Sort  (cost=18.45..18.46 rows=1 width=51) (actual time=0.115..0.117 rows=1 loops=1)
+  Sort Key: b.scheduled_start
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=10
+  ->  Nested Loop Left Join  (cost=8.58..18.44 rows=1 width=51) (actual time=0.081..0.089 rows=1 loops=1)
+        Buffers: shared hit=7
+        ->  Hash Join  (cost=8.30..10.14 rows=1 width=43) (actual time=0.065..0.073 rows=1 loops=1)
+              Hash Cond: (s.service_id = b.service_id)
+              Buffers: shared hit=4
+              ->  Seq Scan on services s  (cost=0.00..1.60 rows=60 width=20) (actual time=0.013..0.016 rows=60 loops=1)
+                    Buffers: shared hit=1
+              ->  Hash  (cost=8.29..8.29 rows=1 width=31) (actual time=0.027..0.027 rows=1 loops=1)
+                    Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                    Buffers: shared hit=3
+                    ->  Index Scan using idx_bookings_customer_cover on bookings b  (cost=0.28..8.29 rows=1 width=31) (actual time=0.017..0.017 rows=1 loops=1)
+                          Index Cond: (customer_id = 226)
+                          Buffers: shared hit=3
+        ->  Index Scan using professionals_pkey on professionals p  (cost=0.28..8.30 rows=1 width=16) (actual time=0.013..0.013 rows=1 loops=1)
+              Index Cond: (pro_id = b.pro_id)
+              Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=891
+Planning Time: 3.846 ms
+Execution Time: 0.222 ms
+=== R03 run 5 ===
+Sort  (cost=18.45..18.46 rows=1 width=51) (actual time=0.127..0.128 rows=1 loops=1)
+  Sort Key: b.scheduled_start
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=10
+  ->  Nested Loop Left Join  (cost=8.58..18.44 rows=1 width=51) (actual time=0.091..0.100 rows=1 loops=1)
+        Buffers: shared hit=7
+        ->  Hash Join  (cost=8.30..10.14 rows=1 width=43) (actual time=0.077..0.086 rows=1 loops=1)
+              Hash Cond: (s.service_id = b.service_id)
+              Buffers: shared hit=4
+              ->  Seq Scan on services s  (cost=0.00..1.60 rows=60 width=20) (actual time=0.013..0.017 rows=60 loops=1)
+                    Buffers: shared hit=1
+              ->  Hash  (cost=8.29..8.29 rows=1 width=31) (actual time=0.051..0.051 rows=1 loops=1)
+                    Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                    Buffers: shared hit=3
+                    ->  Index Scan using idx_bookings_customer_cover on bookings b  (cost=0.28..8.29 rows=1 width=31) (actual time=0.040..0.041 rows=1 loops=1)
+                          Index Cond: (customer_id = 226)
+                          Buffers: shared hit=3
+        ->  Index Scan using professionals_pkey on professionals p  (cost=0.28..8.30 rows=1 width=16) (actual time=0.010..0.010 rows=1 loops=1)
+              Index Cond: (pro_id = b.pro_id)
+              Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=891
+Planning Time: 3.924 ms
+Execution Time: 0.263 ms

@@ -1,0 +1,80 @@
+=== R12 run 1 ===
+GroupAggregate  (cost=1001.85..1004.42 rows=103 width=48) (actual time=7.509..7.775 rows=6 loops=1)
+  Group Key: (date_trunc('month'::text, booked_at))
+  Buffers: shared hit=2537 read=57
+  ->  Sort  (cost=1001.85..1002.11 rows=103 width=11) (actual time=7.423..7.507 rows=4543 loops=1)
+        Sort Key: (date_trunc('month'::text, booked_at))
+        Sort Method: quicksort  Memory: 441kB
+        Buffers: shared hit=2537 read=57
+        ->  Index Scan using idx_bookings_plus_discount on bookings b  (cost=0.29..998.40 rows=103 width=11) (actual time=5.113..7.208 rows=4543 loops=1)
+              Filter: (EXTRACT(year FROM booked_at) = '2026'::numeric)
+              Rows Removed by Filter: 15857
+              Buffers: shared hit=2534 read=57
+Planning:
+  Buffers: shared hit=592
+Planning Time: 1.297 ms
+Execution Time: 7.821 ms
+=== R12 run 2 ===
+GroupAggregate  (cost=1001.85..1004.42 rows=103 width=48) (actual time=7.567..7.786 rows=6 loops=1)
+  Group Key: (date_trunc('month'::text, booked_at))
+  Buffers: shared hit=2594
+  ->  Sort  (cost=1001.85..1002.11 rows=103 width=11) (actual time=7.495..7.569 rows=4543 loops=1)
+        Sort Key: (date_trunc('month'::text, booked_at))
+        Sort Method: quicksort  Memory: 441kB
+        Buffers: shared hit=2594
+        ->  Index Scan using idx_bookings_plus_discount on bookings b  (cost=0.29..998.40 rows=103 width=11) (actual time=4.936..7.257 rows=4543 loops=1)
+              Filter: (EXTRACT(year FROM booked_at) = '2026'::numeric)
+              Rows Removed by Filter: 15857
+              Buffers: shared hit=2591
+Planning:
+  Buffers: shared hit=592
+Planning Time: 1.279 ms
+Execution Time: 7.827 ms
+=== R12 run 3 ===
+GroupAggregate  (cost=1001.85..1004.42 rows=103 width=48) (actual time=7.564..7.783 rows=6 loops=1)
+  Group Key: (date_trunc('month'::text, booked_at))
+  Buffers: shared hit=2594
+  ->  Sort  (cost=1001.85..1002.11 rows=103 width=11) (actual time=7.494..7.570 rows=4543 loops=1)
+        Sort Key: (date_trunc('month'::text, booked_at))
+        Sort Method: quicksort  Memory: 441kB
+        Buffers: shared hit=2594
+        ->  Index Scan using idx_bookings_plus_discount on bookings b  (cost=0.29..998.40 rows=103 width=11) (actual time=4.880..7.197 rows=4543 loops=1)
+              Filter: (EXTRACT(year FROM booked_at) = '2026'::numeric)
+              Rows Removed by Filter: 15857
+              Buffers: shared hit=2591
+Planning:
+  Buffers: shared hit=592
+Planning Time: 1.061 ms
+Execution Time: 7.817 ms
+=== R12 run 4 ===
+GroupAggregate  (cost=1001.85..1004.42 rows=103 width=48) (actual time=7.891..8.171 rows=6 loops=1)
+  Group Key: (date_trunc('month'::text, booked_at))
+  Buffers: shared hit=2594
+  ->  Sort  (cost=1001.85..1002.11 rows=103 width=11) (actual time=7.814..7.910 rows=4543 loops=1)
+        Sort Key: (date_trunc('month'::text, booked_at))
+        Sort Method: quicksort  Memory: 441kB
+        Buffers: shared hit=2594
+        ->  Index Scan using idx_bookings_plus_discount on bookings b  (cost=0.29..998.40 rows=103 width=11) (actual time=5.324..7.580 rows=4543 loops=1)
+              Filter: (EXTRACT(year FROM booked_at) = '2026'::numeric)
+              Rows Removed by Filter: 15857
+              Buffers: shared hit=2591
+Planning:
+  Buffers: shared hit=592
+Planning Time: 1.137 ms
+Execution Time: 8.208 ms
+=== R12 run 5 ===
+GroupAggregate  (cost=1001.85..1004.42 rows=103 width=48) (actual time=7.939..8.156 rows=6 loops=1)
+  Group Key: (date_trunc('month'::text, booked_at))
+  Buffers: shared hit=2594
+  ->  Sort  (cost=1001.85..1002.11 rows=103 width=11) (actual time=7.865..7.939 rows=4543 loops=1)
+        Sort Key: (date_trunc('month'::text, booked_at))
+        Sort Method: quicksort  Memory: 441kB
+        Buffers: shared hit=2594
+        ->  Index Scan using idx_bookings_plus_discount on bookings b  (cost=0.29..998.40 rows=103 width=11) (actual time=5.228..7.583 rows=4543 loops=1)
+              Filter: (EXTRACT(year FROM booked_at) = '2026'::numeric)
+              Rows Removed by Filter: 15857
+              Buffers: shared hit=2591
+Planning:
+  Buffers: shared hit=592
+Planning Time: 1.863 ms
+Execution Time: 8.210 ms
