@@ -1,0 +1,31 @@
+query_id,type,avg_ms,median_ms,min_ms,max_ms,scan_nodes
+R01,READ,0.082,0.080,0.075,0.095,Index Only Scan using idx_services_cat_active_price on services | Index Scan using service_categories_category_name_key on service_categories
+R02,READ,2.341,2.290,2.180,2.580,Bitmap Heap Scan on professionals | Bitmap Index Scan on idx_professionals_city_status_rating | Index Only Scan using idx_pro_avail_date_pro_time on pro_availability | Index Scan using idx_bookings_pro_sched on bookings
+R03,READ,0.124,0.120,0.110,0.145,Index Scan using idx_bookings_cust_sched on bookings | Index Scan using services_pkey on services | Index Scan using professionals_pkey on professionals
+R04,READ,0.148,0.142,0.135,0.170,Index Scan using idx_bookings_pro_sched on bookings | Index Scan using services_pkey on services
+R05,READ,0.312,0.305,0.285,0.355,Index Scan using idx_bookings_requested on bookings
+R06,READ,0.038,0.036,0.034,0.046,Index Scan using customers_phone_key on customers
+R07,READ,0.245,0.238,0.220,0.280,Index Scan using idx_bookings_pro_completed on bookings
+R08,READ,1.215,1.190,1.120,1.340,Index Scan using idx_payouts_pending_week on payouts | Index Scan using professionals_pkey on professionals
+R09,READ,48.350,47.920,46.150,51.200,Bitmap Heap Scan on bookings_2026_06 | Bitmap Index Scan on idx_bookings_sched_comp on bookings_2026_06 | Index Scan using services_pkey on services | Seq Scan on service_categories
+R10,READ,185.600,183.400,179.800,194.200,Index Scan using idx_bookings_pro_status on bookings
+R11,READ,8.650,8.520,8.180,9.300,Index Scan using idx_reschedules_created_bkg on reschedules | Index Scan using bookings_pkey on bookings | Index Scan using services_pkey on services
+R12,READ,142.100,140.500,136.200,150.300,Index Scan using idx_bookings_plus_discount on bookings
+R13,READ,12.430,12.180,11.650,13.500,Seq Scan on professionals | Bitmap Index Scan on idx_bookings_cancelled_cust on bookings
+R14,READ,265.400,262.100,255.800,279.500,Bitmap Heap Scan on bookings | Bitmap Index Scan on idx_bookings_city_serv_sched on bookings | Index Scan using services_pkey on services
+R15,READ,64.250,63.500,61.400,68.100,Index Scan using idx_reviews_created_bkg on reviews | Index Scan using bookings_pkey on bookings
+R16,READ,42.180,41.750,40.200,44.800,Bitmap Heap Scan on bookings | Bitmap Index Scan on idx_bookings_city_booked_pin on bookings
+R17,READ,320.500,318.200,310.400,334.100,Bitmap Heap Scan on bookings | Bitmap Index Scan on idx_bookings_cust_serv_comp on bookings | Index Scan using services_pkey on services
+R18,READ,18.720,18.250,17.500,20.600,Bitmap Heap Scan on reviews | Bitmap Index Scan on idx_reviews_comment_trgm on reviews | Index Scan Backward using idx_reviews_created_bkg on reviews
+R19,READ,28.450,27.900,26.800,31.100,Bitmap Heap Scan on professionals | Bitmap Index Scan on idx_professionals_city_status_rating | Index Only Scan using idx_bookings_pro_sched_comp on bookings | Index Only Scan using idx_bookings_pro_last_job on bookings
+R20,READ,41.200,40.850,39.500,43.500,Bitmap Heap Scan on bookings_2026_06 | Bitmap Index Scan on idx_bookings_gmv_comp on bookings_2026_06
+R21,READ,198.700,196.200,190.500,210.400,Bitmap Heap Scan on bookings | Index Scan using services_pkey on services | Index Scan using pro_skills_pkey on pro_skills
+R22,READ,0.085,0.082,0.078,0.098,Index Scan using idx_bookings_booked_at_id on bookings
+R23,READ,0.065,0.062,0.058,0.076,Index Scan using bookings_pkey on bookings | Index Scan using services_pkey on services
+R24,READ,24.600,24.150,23.400,26.300,Index Scan using idx_bookings_canc_fee on bookings
+R25,READ,34.800,34.200,33.100,37.400,Index Only Scan using idx_pro_avail_date_pro_time on pro_availability | Bitmap Heap Scan on professionals | Index Only Scan using idx_bookings_pro_sched_comp on bookings
+W01,WRITE,1.140,1.110,1.050,1.280,(no scan)
+W02,WRITE,0.420,0.410,0.380,0.470,Index Scan using idx_bookings_requested_min on bookings | Index Scan using bookings_pkey on bookings
+W03,WRITE,0.485,0.470,0.440,0.550,Index Scan using idx_bookings_assigned_pro on bookings
+W04,WRITE,168.900,166.500,161.200,179.800,Bitmap Heap Scan on bookings | Bitmap Index Scan on idx_bookings_pro_completed on bookings
+W05,WRITE,3.840,3.750,3.550,4.250,Index Scan using idx_bookings_noshow on bookings

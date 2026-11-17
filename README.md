@@ -43,7 +43,7 @@ To ensure high code quality, fair workload distribution, and verified commit his
 │ CP0 & CP1          │ CP2                │ CP3                │ CP4                     │
 │ Schema & Modeling  │ Baseline Benchmark │ Index Optimization │ Scalability & Partitions│
 │ Due: Mon 16 Nov    │ Due: Tue 17 Nov    │ Due: Thu 19 Nov    │ Due: Mon 23 Nov         │
-│ Status: COMPLETED  │ Status: NEXT UP    │ Status: UPCOMING   │ Status: UPCOMING        │
+│ Status: COMPLETED  │ Status: COMPLETED  │ Status: IN PROGRESS│ Status: COMPLETED       │
 └────────────────────┴────────────────────┴────────────────────┴─────────────────────────┘
 ```
 
@@ -52,9 +52,9 @@ To ensure high code quality, fair workload distribution, and verified commit his
 | Member | Role | Checkpoint | Assigned Deliverables | Deadline | Marks | Status |
 |--------|------|------------|-----------------------|----------|------:|:------:|
 | **Chirag Tyagi** *(Lead)* | Lead Architect & Data Modeling | **CP0 & CP1** | • `team.json`<br>• `docs/01_problem_understanding.md`<br>• `docs/02_schema_design.md`<br>• `sql/01_schema.sql`<br>• `sql/02_load_data.sql`<br>• `diagrams/er_diagram.*` | Mon 16 Nov 2026 | 7 | **✅ Completed & Committed** |
-| **Ankit Mishra** | Performance Profiler & Benchmarking | **CP2** | • `benchmarks/results/baseline/summary.csv`<br>• `benchmarks/results/baseline/*.txt` (30 plans)<br>• `docs/03_baseline_timings.md` | Tue 17 Nov 2026 | 3 | **⏳ In Progress / Next Up** |
-| **Rishit Babbar** | Optimization Engine & Index Tuning | **CP3** | • `sql/05_indexes.sql`<br>• `sql/06_optimized_queries.sql`<br>• `benchmarks/results/optimized/summary.csv`<br>• `docs/04_optimization_report.md` | Thu 19 Nov 2026 | 16 | **📅 Upcoming** |
-| **Gurtaz Singh** | Scalability Architect & Partitioning | **CP4** | • `sql/08_partitioning.sql`<br>• `benchmarks/results/large/summary.csv`<br>• `docs/05_scalability_report.md` | Mon 23 Nov 2026 | 14 | **📅 Upcoming** |
+| **Ankit Mishra** | Performance Profiler & Benchmarking | **CP2** | • `benchmarks/results/baseline/summary.csv`<br>• `benchmarks/results/baseline/*.txt` (30 plans)<br>• `docs/03_baseline_timings.md` | Tue 17 Nov 2026 | 3 | **✅ Completed & Committed** |
+| **Rishit Babbar** | Optimization Engine & Index Tuning | **CP3** | • `sql/05_indexes.sql`<br>• `sql/06_optimized_queries.sql`<br>• `benchmarks/results/optimized/summary.csv`<br>• `docs/04_optimization_report.md` | Thu 19 Nov 2026 | 16 | **⏳ In Progress** |
+| **Gurtaz Singh** | Scalability Architect & Partitioning | **CP4** | • `sql/08_partitioning.sql`<br>• `benchmarks/results/large/summary.csv`<br>• `docs/05_scalability_report.md` | Mon 23 Nov 2026 | 14 | **✅ Completed & Committed** |
 
 ---
 
